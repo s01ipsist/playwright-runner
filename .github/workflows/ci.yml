@@ -8,7 +8,13 @@ on:
 
 jobs:
   build:
+    name: Build and Push Docker image
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
     steps:
       - name: Build and publish Playwright service image
         uses: docker/build-push-action@v6
