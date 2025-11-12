@@ -6,9 +6,13 @@ on:
     branches:
       - main
 
-- name: Build and publish Playwright service image
-  uses: docker/build-push-action@v6
-  with:
-    push: true
-    platforms: linux/amd64
-    tags: ghcr.io/${{ github.repository_owner }}/playwright-runner:latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and publish Playwright service image
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          platforms: linux/amd64
+          tags: ghcr.io/${{ github.repository_owner }}/playwright-runner:latest
